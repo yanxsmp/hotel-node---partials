@@ -1,36 +1,30 @@
-<!DOCTYPE html>
-<html>
+<div class="container body-content">
+    <h2>Novo cliente</h2>
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
-</head>
-
-<body>
-    <!-- <div class="navbar navbar-inverse navbar-fixed-top"> -->
-            <%- include("../partials/header-adm") -%>
-
-    <div class="container body-content">
-        <h2>Novo cliente</h2>
-
-        <form action="" method="post">
-
-              <%- include("../partials/form-cliente") -%>
-        </form>
-
-        <div>
-            <a class="btn btn-primary btn-lg" href="/adm/adm-cliente" role="button">voltar</a>
-
+    <% if (errors && errors.length > 0) { %>
+        <div class="alert alert-danger">
+            <ul>
+                <% errors.forEach(function(erro) { %>
+                    <li><%= erro.msg %></li>
+                <% }) %>
+            </ul>
         </div>
+    <% } %>
 
-        <hr />
-            <%- include("../partials/footer-adm") -%>
+    <form action="/adm/adm-cliente-novo" method="post" enctype="multipart/form-data">
+
+        <%- include("../partials/form-cliente", { dados: dados }) -%>
+
+    </form>
+
+    <div>
+        <a class="btn btn-primary btn-lg" href="/adm/adm-cliente" role="button">
+            Voltar
+        </a>
     </div>
-</body>
 
-</html>
+    <hr />
+
+    <%- include("../partials/footer-adm") -%>
+
+</div>
